@@ -1,33 +1,27 @@
+// C++ program to find LCM of two numbers
 #include<iostream>
 
 using namespace std;
 
+// Recursive function to return gcd of a and b
+long long gcd(long long int a, long long int b)
+{
+if (b == 0)
+	return a;
+return gcd(b, a % b);
+}
+
+// Function to return LCM of two numbers
+long long lcm(int a, int b)
+{
+	return (a / gcd(a, b)) * b;
+}
+
 int main()
 {
-     int a,arr[10],count=2;
-     cin>>a;
-
-     for(int i=2;i<a/2;i++)
-     {
-         if((a%2)==0)
-         {
-             arr[i]=2;
-             a = a/2;
-             count++;
-         }
-         else{
-             if((a%i)==0)
-             {
-                 arr[i] = a/i;
-                 a = a/i;
-                 count++;
-             }
-         }
-     }
-
-     for(int j=count;j>2;j--)
-     {
-         cout<<arr[j]<<endl;
-     }
-     return 0;
+     int a = 15, b = 20;
+	cout <<"LCM of " << a << " and "
+		<< b << " is " << lcm(a, b);
+	return 0;
 }
+
